@@ -1,0 +1,2 @@
+Name: Andrii, Age: 22, City: Lviv
+Name: Lina, Age: 12, City: Sancey
