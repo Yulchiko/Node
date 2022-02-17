@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .login{
+        background: url("kraska_voda_zhidkost_85058_1600x1200.jpg") no-repeat center/cover;
+        height: 1200px;
+        width: 1600px;
+        position: fixed;
+    }
+    .btn{
+        background: aqua;
+        border-radius: 10px;
+        width: 80px;
+        height: 35px;
+    }
+</style>
+<body>
+<div class="login">
+    <form class="form" action="/login" method="post">
+        <label>First name: <input type="text" name="firstName" placeholder="user first name"></label>
+        <label>Last name: <input type="text" name="lastName" placeholder="user last name"></label>
+        <label>Email: <input type="text" name="email" placeholder="email"></label>
+        <label>Password: <input type="text" name="password" placeholder="password"></label>
+        <label>Age: <input type="text" name="age" placeholder="age"></label>
+        <label>City: <input type="text" name="city" placeholder="city"></label>
+        <input class="input btn" type="submit" value="Click"/>
+    </form>
+</div>
+
+</body>
+</html>
