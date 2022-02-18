@@ -10,6 +10,7 @@ const express = require("express");
 const path = require("path");
 const {engine} = require("express-handlebars");
 const app = express();
+const bodyParser = require('body-parser')
 
 const users = [
     {
@@ -78,7 +79,9 @@ app.get('/users/:userId', (req, res) => {
     const {userId} = req.params;
         res.render('user', users[userId - 1]);
 });
-
+app.get('/signIn', (req, res) => {
+    res.render('signIn');
+});
 
 app.post('/login', (req, res)=> {
        const emailList = users.some((registerUser) => registerUser.email === req.body.email);
@@ -88,7 +91,31 @@ app.post('/login', (req, res)=> {
         users.push(req.body);
         res.redirect('/users');
     }
-})
+});
+
+
+app.post('/signIn',(req, res)=>{
+    const userInfo = req.body;
+
+    const EmailUser = users.findIndex((user) => user.email === userInfo.email);
+    if (EmailUser === -1) {
+        res.redirect('/notFound');
+        return;
+    }
+    const userAll = users[EmailUser];
+
+    if (userInfo.password !== userAll.password) {
+        res.redirect('/notFound');
+        return;
+    }
+
+    res.redirect(`/users/${EmailUser + 1}`);
+});
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use((req, res)=>{
     res.render('notFound')
 })
